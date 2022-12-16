@@ -1,0 +1,52 @@
+Question - Implement Queue using Stacks
+
+class MyQueue {
+public:
+
+    stack<int> input,output;
+    
+    MyQueue() {
+        
+    }
+    
+    void push(int x) {
+        input.push(x);
+    }
+    
+    int pop() {
+        if(output.empty())
+        {
+          while(!input.empty())
+          {
+            int x = input.top();
+            input.pop();
+            output.push(x);
+          }
+        }
+        int y = output.top();
+        output.pop();
+        return y;
+    }
+    
+    int peek() {
+        if(output.empty())
+        {
+          while(!input.empty())
+          {
+            int x = input.top();
+            input.pop();
+            output.push(x);
+          }
+        }
+        int y = output.top();
+        return y;
+    }
+    
+    bool empty() {
+        return input.empty() && output.empty();
+    }
+};
+
+
+SC : O(2N)
+TC : O(1) amototized
